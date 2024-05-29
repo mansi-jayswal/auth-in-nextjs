@@ -7,7 +7,7 @@ connectToMongo();
 export async function POST(req: NextRequest) {
   try {
     const { id, username, email, password }: { id: string; username: string; email: string; password: string } = await req.json();
-
+    
     const user = await User.findById(id);
     if (!user) {
       return NextResponse.json({

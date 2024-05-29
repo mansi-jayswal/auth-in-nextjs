@@ -16,9 +16,14 @@ function ProfilePage() {
 
   console.log("hello");
 
-  const handleLogout = () => {
+  const handleLogout =async () => {
+    const res= await fetch('http://localhost:3000/api/logout');
+    const data = await res.json();
+    console.log('response is :'+res)
+    console.log('data is : '+ data)
     dispatch(clearUser());
-    toast.success("logout successful!");
+    toast.success(data.message);
+    router.replace('/login');
   };
   const handleEdit = () => {
     router.replace('/editProfile');
